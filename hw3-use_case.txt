@@ -1,0 +1,61 @@
+@startuml
+left to right direction
+
+package webAPI as "Web interface" {
+ usecase create_notepad as "Create notepad"
+ usecase save_notepad as "Save notepad"
+ usecase open_notepad as "Open notepad"
+ usecase create_code as "Create code cell"
+ usecase create_test as "Create text cell"
+ usecase voiceover as "Voiceover of interface"
+
+ package cellAPI as "Cell interface" {
+  usecase write as "Write in code cell"
+  usecase write_comm as "Write in text cell"
+  usecase complete_all as "Complete all cells"
+  usecase complete_one as "Complete one cell"
+  usecase delete as "Delete cell"
+  usecase move_up as "Move up cell"
+  usecase move_down as "Move down cell"
+  usecase read as "Read output information"
+  usecase listen as "Listen output information"
+ }
+}
+
+actor prog as "Programmer"
+actor bprog as "Blind Programmer"
+
+
+
+prog ---> create_notepad
+prog ---> save_notepad
+prog ---> open_notepad
+prog ---> create_code
+prog ---> create_test
+
+bprog ---> create_notepad
+bprog ---> save_notepad
+bprog ---> open_notepad
+bprog ---> create_code
+bprog ---> create_test
+bprog ---> voiceover
+
+prog ---> write
+prog ---> write_comm
+prog ---> complete_all
+prog ---> complete_one
+prog ---> delete
+prog ---> move_up
+prog ---> move_down
+prog ---> read
+
+bprog ---> write
+bprog ---> write_comm
+bprog ---> complete_all
+bprog ---> complete_one
+bprog ---> delete
+bprog ---> move_up
+bprog ---> move_down
+bprog ---> listen
+
+@enduml
