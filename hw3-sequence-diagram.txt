@@ -1,0 +1,24 @@
+@startuml
+
+actor prog as "Programmer"
+participant interface as "Notepad Interface"
+participant cell_i as "Cell Interface"
+
+
+prog -> interface: Create notepad
+prog -> interface: Open notepad
+prog -> interface: Save notepad
+prog -> interface: Create code cell
+prog -> interface: Create text cell
+
+prog -> cell_i: Delete cell
+prog -> cell_i: Move cell
+
+prog -> cell_i: Write code
+prog -> cell_i: Write text
+
+prog -> cell_i: Complete all cells
+prog -> cell_i: Complete one cell
+prog -> cell_i: Get output information
+
+@enduml
