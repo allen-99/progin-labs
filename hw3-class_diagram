@@ -49,4 +49,7 @@ class Notebook {
  +startAllCellsCode()
 }
 
+TextCell --|> Cell
+CodeCell --|> Cell
+Cell --* Notebook
 @enduml
