@@ -1,0 +1,52 @@
+@startuml
+
+abstract class Cell {
+ -number index
+ -string value
+
+ -getIndex()
+ +getValue()
+ +setValue(string value)
+ +deleteCell()
+ +moveCell(bool direction)
+}
+
+class CodeCell {
+ -number index
+ -string value
+ -string result
+ -string pLanguage
+
+ -getIndex()
+ +getValue()
+ +setValue(string value)
+ +getResult()
+ +deleteCell()
+ +moveCell(bool direction)
+ +startCode()
+}
+
+class TextCell {
+ -number index
+ -string value
+
+ -getIndex()
+ +getValue()
+ +setValue(string value)
+ +deleteCell()
+ +moveCell(bool direction)
+}
+
+class Notebook {
+ -string id
+ -string name
+
+ -getId()
+ +getName()
+ +setName(string name)
+ +saveNotebook()
+ +addCell()
+ +startAllCellsCode()
+}
+
+@enduml
