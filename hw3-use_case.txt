@@ -40,22 +40,20 @@ bprog ---> create_code
 bprog ---> create_test
 bprog ---> voiceover
 
-prog ---> write
-prog ---> write_comm
-prog ---> complete_all
-prog ---> complete_one
-prog ---> delete
-prog ---> move_up
-prog ---> move_down
-prog ---> read
+(choose_cell) as "Choose cell"
+prog --> choose_cell
+bprog --> choose_cell
 
-bprog ---> write
-bprog ---> write_comm
-bprog ---> complete_all
-bprog ---> complete_one
-bprog ---> delete
-bprog ---> move_up
-bprog ---> move_down
-bprog ---> listen
+choose_cell ---> write
+choose_cell ---> write_comm
+choose_cell ---> complete_all
+choose_cell ---> complete_one
+choose_cell ---> delete
+choose_cell ---> move_up
+choose_cell ---> move_down
+choose_cell ---> read
+choose_cell ---> listen
+
+
 
 @enduml
