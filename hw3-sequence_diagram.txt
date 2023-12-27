@@ -5,20 +5,46 @@ participant interface as "Notepad Interface"
 participant cell_i as "Cell Interface"
 
 
-prog -> interface: Create notepad
-prog -> interface: Open notepad
-prog -> interface: Save notepad
-prog -> interface: Create code cell
-prog -> interface: Create text cell
+prog -> interface: Click on button "Create notepad"
+prog <-- interface: Return new notepad
+prog -> interface: Click on button "Open notepad" 
+prog <-- interface: Open list of notepads
+prog -> interface: Choose and click on one notepad name
+prog <-- interface: Open this notepad
 
-prog -> cell_i: Delete cell
-prog -> cell_i: Move cell
+prog -> interface: Click on button "Save notepad"
+prog <-- interface: Save current notepad
+prog -> interface: Click on button "New code cell"
+prog <-- interface: Create code cell
+prog -> interface: Click on button "New text cell"
+prog <-- interface: Create text cell
 
+prog -> cell_i: Choose cell
+prog <-- cell_i: Сell illumination
+prog -> cell_i: Choose cell delete operation
+prog <-- cell_i: Delete current cell
+
+prog -> cell_i: Choose cell
+prog <-- cell_i: Сell illumination
+prog -> cell_i: Choose cell move operation
+prog <-- cell_i: Return move options
+prog -> cell_i: Choose move option
+prog <-- cell_i: Move cell
+
+prog -> cell_i: Choose code cell
+prog <-- cell_i: Сell illumination
 prog -> cell_i: Write code
+
+prog -> cell_i: Choose text cell
+prog <-- cell_i: Сell illumination
 prog -> cell_i: Write text
 
-prog -> cell_i: Complete all cells
-prog -> cell_i: Complete one cell
-prog -> cell_i: Get output information
+prog -> cell_i: Click on button "Complete all cells"
+prog <-- cell_i: Complete all cells and send result
+
+prog -> cell_i: Choose code cell
+prog <-- cell_i: Сell illumination
+prog -> cell_i: Click on button "Complete current cell"
+prog <-- cell_i: Complete one cell
 
 @enduml
