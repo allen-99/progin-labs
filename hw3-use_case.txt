@@ -6,13 +6,14 @@ package webAPI as "Web interface" {
  usecase save_notepad as "Save notepad"
  usecase open_notepad as "Open notepad"
  usecase create_code as "Create code cell"
- usecase create_test as "Create text cell"
- usecase voiceover as "Voiceover of interface"
+ usecase create_text as "Create text cell"
+ usecase choose_cell_code as "Choose code cell"
+ usecase choose_cell_text as "Choose text cell"
+ usecase complete_all as "Complete all cells"
 
  package cellAPI as "Cell interface" {
   usecase write as "Write in code cell"
   usecase write_comm as "Write in text cell"
-  usecase complete_all as "Complete all cells"
   usecase complete_one as "Complete one cell"
   usecase delete as "Delete cell"
   usecase move_up as "Move up cell"
@@ -25,35 +26,41 @@ package webAPI as "Web interface" {
 actor prog as "Programmer"
 actor bprog as "Blind Programmer"
 
+prog --> create_notepad
+prog --> open_notepad
 
+bprog --> create_notepad
+bprog --> open_notepad
 
-prog ---> create_notepad
-prog ---> save_notepad
-prog ---> open_notepad
-prog ---> create_code
-prog ---> create_test
+create_notepad --> save_notepad
+create_notepad --> create_code
+create_notepad --> create_text
+create_notepad --> choose_cell_code
+create_notepad --> choose_cell_text
+create_notepad --> complete_all
 
-bprog ---> create_notepad
-bprog ---> save_notepad
-bprog ---> open_notepad
-bprog ---> create_code
-bprog ---> create_test
-bprog ---> voiceover
+open_notepad --> save_notepad
+open_notepad --> create_code
+open_notepad --> create_text
+open_notepad --> choose_cell_code
+open_notepad --> choose_cell_text
+open_notepad --> complete_all
 
-(choose_cell) as "Choose cell"
-prog --> choose_cell
-bprog --> choose_cell
+create_code --> choose_cell_code
+create_text --> choose_cell_text
 
-choose_cell ---> write
-choose_cell ---> write_comm
-choose_cell ---> complete_all
-choose_cell ---> complete_one
-choose_cell ---> delete
-choose_cell ---> move_up
-choose_cell ---> move_down
-choose_cell ---> read
-choose_cell ---> listen
+choose_cell_code --> write
+choose_cell_code --> complete_one
+choose_cell_code --> delete
+choose_cell_code --> move_up
+choose_cell_code --> move_down
+choose_cell_code --> read
+choose_cell_code --> listen
 
-
+choose_cell_text --> write_comm
+choose_cell_text --> move_up
+choose_cell_text --> move_down
+choose_cell_text --> read
+choose_cell_text --> listen
 
 @enduml
